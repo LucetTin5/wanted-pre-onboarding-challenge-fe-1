@@ -1,5 +1,16 @@
+import { AppWrapper } from "./components/style";
+import { GlobalStyle } from "./GlobalStyle";
+import { Router } from "./Router";
+
 function App() {
-  return <div className="App"></div>;
+  return (
+    <>
+      <GlobalStyle />
+      <AppWrapper>
+        <Router />
+      </AppWrapper>
+    </>
+  );
 }
 
 export default App;
