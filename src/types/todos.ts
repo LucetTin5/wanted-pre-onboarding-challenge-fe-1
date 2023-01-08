@@ -15,4 +15,5 @@ export interface TodoUpdate extends Todo {
 
 export interface TodoList {
   todos: TodoContent[];
+  toUpdate: TodoContent | null;
 }
