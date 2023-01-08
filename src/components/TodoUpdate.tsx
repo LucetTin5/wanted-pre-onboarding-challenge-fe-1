@@ -12,7 +12,7 @@ import {
 interface TodoUpdateProps {
   toUpdate: TodoContent;
   handleUpdateClose: () => void;
-  handleUpdate: () => void;
+  handleUpdate: (data: TodoContent) => void;
 }
 
 export const TodoUpdate = ({

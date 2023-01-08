@@ -30,12 +30,15 @@ const TodoList = ({
   const handleUpdateOpen = (id: string) => {
     setUpdateOpen(true);
     setIdToUpdate(id);
-    getItemById(id);
+    getItemById(idToUpdate);
   };
   const handleUpdateClose = () => {
     setUpdateOpen(false);
   };
-  const handleUpdate = () => {};
+  const handleUpdate = (data: TodoContent) => {
+    updateItem(data);
+    handleUpdateClose();
+  };
   const handleRemove = (id: string) => {
     if (confirm("Do you want to delete it?")) {
       removeItem(id);
