@@ -17,7 +17,9 @@ export const CreateTodo = ({ create }: CreateTodoProps) => {
   const { register, handleSubmit } = useForm<Todo>();
   const [openForm, setOpenForm] = useState(false);
 
-  const onSubmit = (data: Todo) => create(data);
+  const onSubmit = async (data: Todo) => {
+    create(data);
+  };
   const handleOpenForm = (e: React.MouseEvent<HTMLButtonElement>) => {
     setOpenForm((cur) => !cur);
     e.currentTarget.classList.toggle("active");
@@ -25,7 +27,7 @@ export const CreateTodo = ({ create }: CreateTodoProps) => {
 
   return (
     <CreateTodoForm onSubmit={handleSubmit(onSubmit)}>
-      <CreateTodoOpenButton onClick={handleOpenForm}>
+      <CreateTodoOpenButton type="button" onClick={handleOpenForm}>
         Click to open/close for new todo
       </CreateTodoOpenButton>
       {openForm && (

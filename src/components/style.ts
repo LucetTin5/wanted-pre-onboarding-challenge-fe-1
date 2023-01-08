@@ -66,13 +66,23 @@ export const TodoListItemDetail = styled.div`
   padding: 0.5rem;
   width: 100%;
 `;
+export const TodoItemCloseButton = styled.button`
+  border: 1px solid #ccc;
+  border-radius: 20%;
+  padding: 0 0.3rem;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  &::before {
+    content: "X";
+  }
+`;
 
 export const TodoTitle = styled.h3`
   font-weight: bold;
   flex: 1;
 `;
 
-export const TodoContent = styled.p`
+export const TodoItemContent = styled.p`
   flex: 3;
 `;
 
@@ -137,4 +147,45 @@ export const CreateTodoContent = styled.textarea`
 export const CreateTodoButton = styled.button`
   padding: 0.4rem;
   width: 30%;
+`;
+
+// update Todo
+export const Dimmed = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 0;
+`;
+
+export const TodoUpdateForm = styled.form`
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  width: 80%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  z-index: 2;
+`;
+
+export const FormTitle = styled.h4`
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+`;
+
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  padding: 1rem;
+  justify-content: space-around;
 `;

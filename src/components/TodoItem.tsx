@@ -1,31 +1,45 @@
 import { useState } from "react";
-import { Todo } from "../types/todos";
+import { Todo, TodoContent } from "../types/todos";
 import {
-  TodoContent,
+  TodoItemContent,
   TodoDeleteButton,
   TodoItemWrapper,
   TodoListItem,
   TodoListItemDetail,
   TodoTitle,
   TodoUpdateButton,
+  TodoItemCloseButton,
 } from "./style";
 
 interface TodoItemProps extends Todo {
   id: string;
+  handleUpdateOpen: (id: string) => void;
+  handleRemove: (id: string) => void;
 }
 
-export const TodoItem = ({ id, title, content }: TodoItemProps) => {
+export const TodoItem = ({
+  id,
+  title,
+  content,
+  handleUpdateOpen,
+  handleRemove,
+}: TodoItemProps) => {
   const [open, setOpen] = useState(false);
   const handleClick = () => setOpen((cur) => !cur);
   return (
     <TodoItemWrapper id={id}>
       {!open && <TodoListItem onClick={handleClick}>{title}</TodoListItem>}
       {open && (
-        <TodoListItemDetail onClick={handleClick}>
+        <TodoListItemDetail>
+          <TodoItemCloseButton onClick={handleClick} />
           <TodoTitle>{title}</TodoTitle>
-          <TodoContent>{content}</TodoContent>
-          <TodoUpdateButton>수정하기</TodoUpdateButton>
-          <TodoDeleteButton>삭제하기</TodoDeleteButton>
+          <TodoItemContent>{content}</TodoItemContent>
+          <TodoUpdateButton type="button" onClick={() => handleUpdateOpen(id)}>
+            수정하기
+          </TodoUpdateButton>
+          <TodoDeleteButton type="button" onClick={() => handleRemove(id)}>
+            삭제하기
+          </TodoDeleteButton>
         </TodoListItemDetail>
       )}
     </TodoItemWrapper>
