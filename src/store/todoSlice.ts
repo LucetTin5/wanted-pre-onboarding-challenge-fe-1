@@ -10,6 +10,7 @@ import { TodoList } from "../types/todos";
 
 const initialState: TodoList = {
   todos: [],
+  toUpdate: null,
 };
 
 export const todoSlice = createSlice({
@@ -21,7 +22,7 @@ export const todoSlice = createSlice({
       state.todos = action.payload.data;
     });
     builder.addCase(getTodoById.fulfilled, (state, action) => {
-      state.todos = action.payload.data;
+      state.toUpdate = action.payload.data;
     });
     builder.addCase(createTodo.fulfilled, (state, action) => {
       state.todos.push(action.payload.data);
@@ -32,9 +33,7 @@ export const todoSlice = createSlice({
       );
     });
     builder.addCase(deleteTodo.fulfilled, (state, action) => {
-      state.todos = state.todos.filter(
-        (todo) => todo.id !== action.payload.data
-      );
+      state.todos = state.todos.filter((todo) => todo.id !== action.meta.arg);
     });
   },
 });
